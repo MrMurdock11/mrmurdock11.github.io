@@ -22,6 +22,7 @@ I'm fullstack developer with over 8 years of experience in commercial developmen
     "technologies": {
       "frontend": ["React", "RTK", "Redux-Saga", "Inversify", "Angular", "RxJS", "NgRx", "Blazor", "Fluxor", "SocketIO"],
       "backend": ["Express", "NestJS", ".NET Framework", ".NET", "Autofac", "type-orm", "EF", "Dapper", "NUnit", "XUnit", "AutoMapper", "Mapperly"],
+      "desktop": ["Electron"],
       "databases": ["PostgreSQL", "MS SQL", "SQLite"]
     }
   }
