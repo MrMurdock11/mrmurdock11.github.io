@@ -96,7 +96,7 @@ comments:
     repo: mrmurdock11/mrmurdock11.github.io # <gh-username>/<repo>
     repo_id: R_kgDOLEsGbg
     category: Comments
-    category_id: DIC_kwDOLEsGbs4Cc_AT
+    category_id: DIC_kwDOLEsGbs4CdA06
     mapping: # optional, default to 'pathname'
     input_position: top # optional, default to 'bottom'
     lang: # optional, default to the value of `site.lang`
