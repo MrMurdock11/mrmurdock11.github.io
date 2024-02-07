@@ -157,7 +157,7 @@ program.parse();
 I want to look at this line `#!/usr/bin/env node`. It calls shebang. Shebang or hashbang is the first line of the file that tells the OS which interpreter to use, so when you try to run the `index.js` file, the OS will run it using NodeJS. I suggest you read ["NodeJS Shebang"](https://alexewerlof.medium.com/node-shebang-e1d4b02f731d) if you need more information.
 
 > When the user invokes the CLI, `index.js` is executed by the NodeJS interpreter every time, so it is advisable to keep this information in mind when planning a CLI tool to make it easier to optimize your program.
-{: prompt-info}
+{: .prompt-info}
 
 At this step, we can call the CLI through NodeJS interpreter and check how it works. Run the following command:
 
@@ -214,7 +214,7 @@ npm link
 This command will install the package globally by creating a symlink from the global `node_modules` directory to the local project. After running this, we should be able to execute the command using the name we specified in the `bin` field.
 
 >The `bin` field is primarily used for creating npm packages that provide command-line tools. If your project is not intended to be installed globally or used as a CLI tool, you may not need to use the `bin` field.
-{: prompt-tip}
+{: .prompt-tip}
 
 Now we can call the CLI tool, just as if it were published.
 
@@ -223,7 +223,7 @@ noty c "The Best C# Blog Posts" -t "- How to Build a URL Shortener With .NET"
 ```
 
 > To unlink the package and remove the symlink to your local project, you will need to run the `npm unlink <package-name>` command.
-{: prompt-info}
+{: .prompt-info}
 
 You have successfully created a simple CLI application with NodeJS. To expand your skills, explore other features of the commander package. For example, you can create subcommands, handle errors, and add command parameters.
 
