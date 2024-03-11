@@ -13,7 +13,7 @@ Working in a company with three development teams, each managing three or more R
 
 This led to the idea of standardization: creating a unified code style document to standardize the way we tackle tasks. Such standardization could help prevent the code review bottlenecks or the stalling during implementation caused by errors or sticking points.
 
-> I suggest you take a look at the [NodeJS CLI Implementation](/posts/nodejs-and-cli-command-line-interface-creation-made-easy/) if you're looking for a step-by-step guide to developing and releasing CLI tools.
+> I suggest you take a look at the [NodeJS and CLI: Creation Command Line Interface](/posts/nodejs-and-cli-creation-command-line-interface) if you're looking for a step-by-step guide to developing and releasing CLI tools.
 {: .prompt-info }
 
 ## Project Structure and Source Code
