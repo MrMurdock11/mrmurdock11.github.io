@@ -8,7 +8,7 @@ tags: [ "nodejs", "oclif", "cli tools", "software development", "command line", 
 ---
 In the realm of software development, command-line interfaces (CLIs) often lag behind in user experience and efficiency. This post introduces a powerful duo, NodeJS and oclif, that is changing the way we build CLIs. By using these tools, developers can create intuitive, efficient command-line applications that delight users. I'll walk you through enhancing your CLI projects to make them not just functional, but exceptional.
 
->This article is continuation of [[NodeJS and CLI Crafting Command Line Interfaces Made Easy]] 'cause here we will try to develop full functionality that we describe in the article above and finish our application.
+>This article is continuation of [NodeJS and CLI: Creation Command Line Interface](/posts/nodejs-and-cli-creation-command-line-interface) 'cause here we will try to develop full functionality that we describe in the article above and finish our application.
 {: .prompt-info}
 
 ## What is oclif and Why You Should Use It for Creating CLI Tools?

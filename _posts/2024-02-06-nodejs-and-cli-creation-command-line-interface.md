@@ -2,7 +2,7 @@
 title: "NodeJS and CLI: Creation Command Line Interface"
 date: 2024-02-06 03:02:00 +0400
 image:
-  path: /assets/img/posts/2024-02-06-nodejs-cli-implementation/cover.webp
+  path: /assets/img/posts/2024-02-06-nodejs-and-cli-creation-command-line-interface/cover.webp
 categories: [Tools, CLI]
 tags: [nodejs, command line, cli tool development, automation, scripting, nodejs cli, developer productivity, commander.js, cli project setup]
 ---
@@ -233,7 +233,7 @@ We've learned how to make a simple CLI tool with NodeJS in this guide. We starte
 
 But there's more to explore in making CLI tools. I'm excited to tell you about two more blog posts coming up:
 
-- **[NodeJS and oclif: A Simple Guide to CLI Tools](nodejs-and-oclif-a-simple-guide-to-cli-tools)**
+- **[NodeJS and oclif: A Simple Guide to CLI Tools](/posts/nodejs-and-oclif-a-simple-guide-to-cli-tools)**
 - **Boosting CLI Tools with Rust**
 
 Keep an eye out for these posts if you're interested in making more advanced CLI tools, whether with NodeJS or by adding Rust into the mix.
