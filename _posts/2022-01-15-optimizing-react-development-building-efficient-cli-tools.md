@@ -2,7 +2,7 @@
 title: "Optimizing React Development: Building Efficient CLI Tools"
 date: 2022-01-15 16:13:00 +0300
 image:
-  path: /assets/img/posts/2024-01-22-optimizing-react-development-building-efficient-cli-tools/cover.jpeg
+  path: /assets/img/posts/2024-01-22-optimizing-react-development-building-efficient-cli-tools/cover.webp
 categories: [Tools, CLI]
 tags: [react development, cli tools, code standardization, nodejs, project management, react components, software efficiency, development workflow, javascript ecosystem, codebase management, react best practices, automation in development, user-friendly coding, react architecture, component building, development challenges, technical innovation, productivity tools, scalable solutions, programming insights]
 ---
@@ -49,7 +49,7 @@ In this diagram, we break down a typical React component:
 4. **`ProductCategoryRow` (turquoise):** displays a heading for each _category_
 5. **`ProductRow` (red):** displays a row for each _product_
 
-Every part of this architecture is carefully designed to ensure modularity and ease of management. Let's take a look at the internal structure:
+Every part of this architecture is carefully designed to ensure modularity, isolation and ease of management. Let's take a look at the internal structure:
 
 ```yaml
 FilterableProductTable/

@@ -1,5 +1,5 @@
 ---
-title: "NodeJS and CLI: Command Line Interface Creation Made Easy"
+title: "NodeJS and CLI: Creation Command Line Interface"
 date: 2024-02-06 03:02:00 +0400
 image:
   path: /assets/img/posts/2024-02-06-nodejs-cli-implementation/cover.webp
@@ -42,21 +42,21 @@ Noty is a simple CLI tool for creating, listing, viewing, and deleting personal 
 - **Deleting Notes**: Implement the `delete` command to remove a note by title.
 - **Viewing Notes**: Implement the `show` command to show a note by title.
 
-```terminal
-amadev@MacBook-Air ~ % noty create "Grocery List" --text "1. Milk 2. Tea 3. Bread"
+```shell
+$ noty create "Grocery List" --text "1. Milk 2. Tea 3. Bread"
 Note 'Grocery List' created successfully.
 
-amadev@MacBook-Air ~ % noty list
+$ noty list
 Your Notes:
   - Grocery List
 
-amadev@MacBook-Air ~ % noty show "grocery list"
+$ noty show "grocery list"
 Title: grocery list
 Created: 2/4/2024
 
 1. Milk 2. Tea 3. Bread
 
-amadev@MacBook-Air ~ % noty delete "grocery list"
+$ noty delete "grocery list"
 Note 'Grocery List' deleted successfully.
 ```
 
@@ -72,17 +72,17 @@ In this section I'll describe all the steps to create a new NodeJS CLI project, 
 
 The first thing to do is create a new directory `noty` for a project and use the command line to navigate to it.
 
-```terminal
+```shell
 mkdir noty
 ```
 
-```terminal
+```shell
 cd noty
 ```
 
 Next, you should initialize a new NodeJS project using following command.
 
-```terminal
+```shell
 npm init -y
 ```
 
@@ -92,11 +92,11 @@ This command will create a new file called `package.json` in the root directory 
 
 To implement our CLI, we will use the [commander](https://www.npmjs.com/package/commander) package, which helps parsing command line arguments and simplifies the process of building the project, and the [@iarna/toml](https://www.npmjs.com/package/@iarna/toml) package, which helps saving and reading information from the TOML file.
 
-```terminal
+```shell
 npm i commander
 ```
 
-```terminal
+```shell
 npm i @iarna/toml
 ```
 
@@ -104,7 +104,7 @@ npm i @iarna/toml
 
 In the project, create a new file named `index.js`with following command.
 
-```terminal
+```shell
 > index.js
 ```
 
@@ -161,7 +161,7 @@ I want to look at this line `#!/usr/bin/env node`. It calls shebang. Shebang or 
 
 At this step, we can call the CLI through NodeJS interpreter and check how it works. Run the following command:
 
-```terminal
+```shell
 node index.js create "Grocery List" --text "1. Milk 2. Tea 3. Bread"
 ```
 
@@ -207,7 +207,7 @@ However, we can choose a specific CLI name that is different from the package na
 
 To test the CLI, we should install the package globally on the system using npm. Run following command:
 
-```terminal
+```shell
 npm link
 ```
 
@@ -218,7 +218,7 @@ This command will install the package globally by creating a symlink from the gl
 
 Now we can call the CLI tool, just as if it were published.
 
-```terminal
+```shell
 noty c "The Best C# Blog Posts" -t "- How to Build a URL Shortener With .NET"
 ```
 
@@ -233,7 +233,7 @@ We've learned how to make a simple CLI tool with NodeJS in this guide. We starte
 
 But there's more to explore in making CLI tools. I'm excited to tell you about two more blog posts coming up:
 
-- **Making CLI Tools with Oclif Framework in NodeJS**
+- **[NodeJS and oclif: A Simple Guide to CLI Tools](nodejs-and-oclif-a-simple-guide-to-cli-tools)**
 - **Boosting CLI Tools with Rust**
 
 Keep an eye out for these posts if you're interested in making more advanced CLI tools, whether with NodeJS or by adding Rust into the mix.
