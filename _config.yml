@@ -44,7 +44,13 @@ social:
     # - https://www.facebook.com/username
     - https://www.linkedin.com/in/azamat-mambetov
 
-google_site_verification: inBleJVLht4sr_MmxXME7RK3WZjbOrZa0nlIqMnfoaQ
+webmaster_verifications:
+  google: inBleJVLht4sr_MmxXME7RK3WZjbOrZa0nlIqMnfoaQ
+  bing: 1E0D5820B5B859D46D79E1A7175A70CB
+  alexa: # fill in your Alexa verification code
+  yandex: # fill in your Yandex verification code
+  baidu: # fill in your Baidu verification code
+  facebook: # fill in your Facebook verification code
 
 # ↑ --------------------------
 # The end of `jekyll-seo-tag` settings
