@@ -66,12 +66,12 @@ Here's a source code of `LogStreamingController`:
 ```ts
 @Controller('logs')
 export class LogStreamingController {
-	constructor(private readonly _logStreamingService: LogStreamingService) {}
+  constructor(private readonly _logStreamingService: LogStreamingService) {}
 
-	@Get('stream')	
-	streamLogs(@Res() response: Response): void {
-		this._logStreamingService.watchLogFile(response);	
-	}
+  @Get('stream')	
+  streamLogs(@Res() response: Response): void {
+    this._logStreamingService.watchLogFile(response);	
+  }
 }
 ```
 
@@ -92,48 +92,48 @@ Here's a source code of `LogStreamingService`:
 ```ts
 @Injectable({ scope: Scope.REQUEST })
 export class LogStreamingService {
-	private readonly LOG_FILE_PATH = path.resolve(
-		`logs/${new Date().toISOString().slice(0, 10)}.log`,
-	);
-	private lastFileSize = 0;
+  private readonly LOG_FILE_PATH = path.resolve(
+    `logs/${new Date().toISOString().slice(0, 10)}.log`,
+  );
+  private lastFileSize = 0;
 
-	public watchLogFile(clientResponse: Response): void {
-		const streamUuid = uuid.v4();
-		const watcher = chokidar.watch(this.LOG_FILE_PATH, { persistent: true });
+  public watchLogFile(clientResponse: Response): void {
+    const streamUuid = uuid.v4();
+    const watcher = chokidar.watch(this.LOG_FILE_PATH, { persistent: true });
 
-		clientResponse.writeHead(200, {
-			'Access-Control-Allow-Origin': '*',
-			'Cache-Control': 'no-cache',
-			Connection: 'keep-alive',
-			'Content-Type': 'text/event-stream',
-		});
+    clientResponse.writeHead(200, {
+      'Access-Control-Allow-Origin': '*',
+      'Cache-Control': 'no-cache',
+      Connection: 'keep-alive',
+      'Content-Type': 'text/event-stream',
+    });
 
-		this.updateLastFileSize();
-		
-		watcher.on('change', () => {
-			const currentSize = fs.statSync(this.LOG_FILE_PATH).size;
-			if (currentSize > this.lastFileSize) {
-				const fd = fs.openSync(this.LOG_FILE_PATH, 'r');
-				const buffer = Buffer.alloc(currentSize - this.lastFileSize);
-				fs.readSync(fd, buffer, 0, buffer.length, this.lastFileSize);
-				// The format of our response should be "id: [id]\nevent: <event-type>\ndata: <some-data>\n"
-				clientResponse.write(
-					`id: ${streamUuid}\nevent: message\ndata: ${buffer.toString()}\n`,
-				);
-				fs.closeSync(fd);
-				this.lastFileSize = currentSize;
-			}
-		});
+    this.updateLastFileSize();
 
-		clientResponse.on('close', () => {
-			console.log('Client disconnected. Stopping file watch.');
-			watcher.close();
-		});
-	}
+    watcher.on('change', () => {
+      const currentSize = fs.statSync(this.LOG_FILE_PATH).size;
+      if (currentSize > this.lastFileSize) {
+        const fd = fs.openSync(this.LOG_FILE_PATH, 'r');
+        const buffer = Buffer.alloc(currentSize - this.lastFileSize);
+        fs.readSync(fd, buffer, 0, buffer.length, this.lastFileSize);
+        // The format of our response should be "id: [id]\nevent: <event-type>\ndata: <some-data>\n"
+        clientResponse.write(
+          `id: ${streamUuid}\nevent: message\ndata: ${buffer.toString()}\n`,
+        );
+        fs.closeSync(fd);
+        this.lastFileSize = currentSize;
+      }
+    });
 
-	private updateLastFileSize(): void {
-		this.lastFileSize = fs.statSync(this.LOG_FILE_PATH).size;
-	}
+    clientResponse.on('close', () => {
+      console.log('Client disconnected. Stopping file watch.');
+      watcher.close();
+    });
+  }
+
+  private updateLastFileSize(): void {
+    this.lastFileSize = fs.statSync(this.LOG_FILE_PATH).size;
+  }
 }
 ```
 
@@ -147,10 +147,10 @@ const path = require('node:path');
 
 const LOG_DIRECTORY_PATH = path.resolve('../log-streaming-sample/logs');
 const USERS = [
-	'Dave Toy',
-	'Wayne Schmeler',
-	'Rodolfo Schiller',
-	'Jackie Labadie',
+  'Dave Toy',
+  'Wayne Schmeler',
+  'Rodolfo Schiller',
+  'Jackie Labadie',
 ];
 
 const OPERATIONS = ['ADD', 'GET', 'WRITE', 'UPDATE', 'READ', 'DELETE'];
@@ -158,36 +158,36 @@ const OPERATIONS = ['ADD', 'GET', 'WRITE', 'UPDATE', 'READ', 'DELETE'];
 const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
 const generateLogMessage = () => {
-	const user = USERS[Math.floor(Math.random() * USERS.length)];
-	const operation = OPERATIONS[Math.floor(Math.random() * OPERATIONS.length)];
-	
-	return `[Service #${Math.floor(Math.random() * 100)}] > ${user} did "${operation}" operation.\n`;
+  const user = USERS[Math.floor(Math.random() * USERS.length)];
+  const operation = OPERATIONS[Math.floor(Math.random() * OPERATIONS.length)];
+
+  return `[Service #${Math.floor(Math.random() * 100)}] > ${user} did "${operation}" operation.\n`;
 };
 
 const getLogFilePath = () => {
-	const logFileName = `${new Date().toISOString().slice(0, 10)}.log`;
-	
-	return path.join(LOG_DIRECTORY_PATH, logFileName);
+  const logFileName = `${new Date().toISOString().slice(0, 10)}.log`;
+
+  return path.join(LOG_DIRECTORY_PATH, logFileName);
 };
 
 const appendLog = async (logPath, message) => {
-	await fs.appendFile(logPath, message, { encoding: 'utf8' });
+  await fs.appendFile(logPath, message, { encoding: 'utf8' });
 };
 
 const main = async () => {
-	const logPath = getLogFilePath();
+  const logPath = getLogFilePath();
 
-	try {
-		await fs.access(logPath);
-	} catch {
-		await appendLog(logPath, '');
-	}
+  try {
+    await fs.access(logPath);
+  } catch {
+    await appendLog(logPath, '');
+  }
 
-	while (true) {
-		const logMessage = generateLogMessage();
-		await appendLog(logPath, logMessage);
-		await delay(1000);
-	}
+  while (true) {
+    const logMessage = generateLogMessage();
+    await appendLog(logPath, logMessage);
+    await delay(1000);
+  }
 };
 
 main().catch(console.error);
@@ -203,32 +203,32 @@ In this part, we're going to show you how to handle live data from a Streaming A
 
 ```tsx
 const App = () => {
-	const [logs, setLogs] = useState<string[]>([]);
+  const [logs, setLogs] = useState<string[]>([]);
 
-	const handleMessage = useCallback((event: MessageEvent) => {
-		setLogs((prevLogs) => [...prevLogs, event.data]);	
-	}, []);
+  const handleMessage = useCallback((event: MessageEvent) => {
+    setLogs((prevLogs) => [...prevLogs, event.data]);	
+  }, []);
 
-	useEventSource("http://localhost:3000/logs/stream", {
-		onMessage: handleMessage,
-	});
+  useEventSource("http://localhost:3000/logs/stream", {
+    onMessage: handleMessage,
+  });
 
-	return (
-		<div className="log-list-container">
-			<h2 className="log-list-header">Log Messages</h2>
-			{logs.length > 0 ? (
-				<ul className="log-list">
-					{logs.map((log, index) => (
-						<li key={index} className="log-item">
-							<span className="log-message">{log}</span>
-						</li>
-					))}
-				</ul>
-			) : (
-				<div>No logs yet.</div>
-			)}
-		</div>
-	);
+  return (
+    <div className="log-list-container">
+      <h2 className="log-list-header">Log Messages</h2>
+      {logs.length > 0 ? (
+        <ul className="log-list">
+          {logs.map((log, index) => (
+            <li key={index} className="log-item">
+              <span className="log-message">{log}</span>
+            </li>
+          ))}
+        </ul>
+      ) : (
+        <div>No logs yet.</div>
+      )}
+    </div>
+  );
 };
 ```
 
@@ -238,32 +238,32 @@ For the technical bit, we use the `useEventSource` hook. This connects to the St
 
 ```ts
 interface UseEventSourceOptions {
-	onOpen?: (ev: Event) => void;
-	onMessage: (ev: MessageEvent) => void;
-	onError?: (ev: Event | MessageEvent) => void;
+  onOpen?: (ev: Event) => void;
+  onMessage: (ev: MessageEvent) => void;
+  onError?: (ev: Event | MessageEvent) => void;
 }
 
 export const useEventSource = (
-	url: string,
-	{ onOpen, onMessage, onError }: UseEventSourceOptions
+  url: string,
+  { onOpen, onMessage, onError }: UseEventSourceOptions
 ): void => {
-	useEffect(() => {
-		const eventSource = new EventSource(url);
-		
-		if (onOpen) eventSource.onopen = onOpen;
-		
-		eventSource.onmessage = onMessage;
-		
-		eventSource.onerror = (event) => {
-			console.error("EventSource error:", event);
-			onError?.(event);
-			eventSource.close();
-		};
+  useEffect(() => {
+    const eventSource = new EventSource(url);
 
-		return () => {
-			eventSource.close();
-		};
-	}, [url, onOpen, onMessage, onError]);
+    if (onOpen) eventSource.onopen = onOpen;
+
+    eventSource.onmessage = onMessage;
+
+    eventSource.onerror = (event) => {
+      console.error("EventSource error:", event);
+      onError?.(event);
+      eventSource.close();
+    };
+
+    return () => {
+      eventSource.close();
+    };
+  }, [url, onOpen, onMessage, onError]);
 };
 ```
 
